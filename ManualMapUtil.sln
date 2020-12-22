@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManualMapUtil.Test", "tests\ManualMapUtil.Test\ManualMapUtil.Test.csproj", "{FA050FBA-6BAA-4A09-B408-53D6B0422777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSample", "src\AppSample\AppSample.csproj", "{5362422B-CBD6-4BB8-9172-941EBD6FCB09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA050FBA-6BAA-4A09-B408-53D6B0422777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA050FBA-6BAA-4A09-B408-53D6B0422777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA050FBA-6BAA-4A09-B408-53D6B0422777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA050FBA-6BAA-4A09-B408-53D6B0422777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5362422B-CBD6-4BB8-9172-941EBD6FCB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5362422B-CBD6-4BB8-9172-941EBD6FCB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5362422B-CBD6-4BB8-9172-941EBD6FCB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5362422B-CBD6-4BB8-9172-941EBD6FCB09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6153022-256C-45B0-9970-E516375CDBBE}
+	EndGlobalSection
+EndGlobal
