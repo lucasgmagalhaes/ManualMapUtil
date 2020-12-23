@@ -4,21 +4,10 @@ using System.Linq;
 
 namespace AppSample
 {
-    public class MapType
+    public struct MapType
     {
-        public readonly Type FromType;
-        public readonly Type ToType;
-
-        public MapType(Type fromType, Type toType)
-        {
-            FromType = fromType;
-            ToType = toType;
-        }
-
-        public bool Equals(Type fromType, Type toType)
-        {
-            return FromType == fromType && ToType == toType;
-        }
+        public Type FromType;
+        public Type ToType;
     }
 
     public class MapperBuilder
@@ -46,7 +35,10 @@ namespace AppSample
                 throw new ArgumentNullException(nameof(func), "Map function can not be null");
             }
 
-            _functions.Add(new MapType(typeof(TFromType), typeof(TToType)), (obj) => func((TFromType)obj));
+            _functions.Add(new MapType() {
+                ToType = typeof (TToType),
+                FromType = typeof (TFromType)
+            }, (obj) => func((TFromType)obj));;
         }
 
         /// <summary>
@@ -75,15 +67,19 @@ namespace AppSample
                 return default;
             }
 
-            var keyValueFunc = _functions.FirstOrDefault(fun => fun.Key.Equals(typeof(TFromType), typeof(TToType)));
-            if (keyValueFunc.Key == null)
+            var keyValueFunc = _functions.GetValueOrDefault(new MapType()
+            {
+                ToType = typeof(TToType),
+                FromType = typeof(TFromType)
+            });
+            if (keyValueFunc == null)
             {
                 throw new MapNotDefinedException($"No map function was found for {typeof(TFromType)} and {typeof(TToType)}");
             }
 
             try
             {
-                return (TToType)keyValueFunc.Value(entity);
+                return (TToType)keyValueFunc(entity);
             }
             catch (Exception error)
             {
