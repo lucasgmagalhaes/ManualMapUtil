@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManualMapUtil.Test", "tests\ManualMapUtil.Test\ManualMapUtil.Test.csproj", "{FA050FBA-6BAA-4A09-B408-53D6B0422777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSample", "src\AppSample\AppSample.csproj", "{5362422B-CBD6-4BB8-9172-941EBD6FCB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSample", "src\AppSample\AppSample.csproj", "{5362422B-CBD6-4BB8-9172-941EBD6FCB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "benchmark\Benchmark\Benchmark.csproj", "{378BBC85-E79A-40DC-BE8C-3FF941030C99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManualMapUtil", "ManualMapUtil\ManualMapUtil.csproj", "{59CA2A6C-3193-4365-8970-A5EAE8BA2954}"
 EndProject
@@ -27,6 +29,10 @@ Global
 		{59CA2A6C-3193-4365-8970-A5EAE8BA2954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59CA2A6C-3193-4365-8970-A5EAE8BA2954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59CA2A6C-3193-4365-8970-A5EAE8BA2954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378BBC85-E79A-40DC-BE8C-3FF941030C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378BBC85-E79A-40DC-BE8C-3FF941030C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378BBC85-E79A-40DC-BE8C-3FF941030C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378BBC85-E79A-40DC-BE8C-3FF941030C99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ namespace AppSample
 {
     public static class Mapper
     {
-        private static MapperBuilder _builder;
+        private static readonly MapperBuilder _builder;
 
         static Mapper()
         {

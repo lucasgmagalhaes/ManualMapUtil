@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 namespace AppSample
@@ -23,11 +23,12 @@ namespace AppSample
 
     public class MapperBuilder
     {
-        private readonly Dictionary<MapType, Func<object, object>> _functions;
+        private readonly Hashtable _functions;
+        private delegate object MapEntity(object entity);
 
         public MapperBuilder()
         {
-            _functions = new Dictionary<MapType, Func<object, object>>();
+            _functions = new Hashtable();
         }
 
         /// <summary>
@@ -46,7 +47,8 @@ namespace AppSample
                 throw new ArgumentNullException(nameof(func), "Map function can not be null");
             }
 
-            _functions.Add(new MapType(typeof(TFromType), typeof(TToType)), (obj) => func((TFromType)obj));
+            var hash = GetTypesHash<TFromType, TToType>();
+            _functions.Add(hash, func);
         }
 
         /// <summary>
@@ -75,20 +77,28 @@ namespace AppSample
                 return default;
             }
 
-            var keyValueFunc = _functions.FirstOrDefault(fun => fun.Key.Equals(typeof(TFromType), typeof(TToType)));
-            if (keyValueFunc.Key == null)
+            var hash = GetTypesHash<TFromType, TToType>();
+            var keyValueFunc = _functions[hash];
+            if (keyValueFunc == null)
             {
                 throw new MapNotDefinedException($"No map function was found for {typeof(TFromType)} and {typeof(TToType)}");
             }
 
             try
             {
-                return (TToType)keyValueFunc.Value(entity);
+                Func<TFromType, TToType> func;
+                func = (Func<TFromType, TToType>)keyValueFunc;
+                return func(entity);
             }
             catch (Exception error)
             {
                 throw new MapFunctionException("An exception was thrown when mapping. See innerException for details", error);
             }
+        }
+
+        private int GetTypesHash<TFromType, TToType>()
+        {
+            return HashCode.Combine(typeof(TFromType).GetHashCode(), typeof(TToType).GetHashCode());
         }
     }
 }
