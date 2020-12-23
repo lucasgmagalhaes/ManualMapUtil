@@ -1,4 +1,4 @@
-﻿using AppSample.Entities;
+﻿using System;
 
 namespace AppSample
 {
@@ -9,9 +9,10 @@ namespace AppSample
         static Mapper()
         {
             _builder = new MapperBuilder();
+        }
 
-            _builder.AddMap<User, UserDTO>(Maps.UserToUserDTO);
-            _builder.AddMap<UserDTO, User>(Maps.UserDTOToUser);
+        public static void InjectMap<TFromType, TToType>(Func<TFromType, TToType> map) {
+            _builder.AddMap(map);
         }
 
         /// <summary>
