@@ -8,6 +8,7 @@ namespace AppSample
     {
         static void Main(string[] args)
         {
+            SetupMapper();
             var user1 = new User
             {
                 Id = 1,
@@ -15,7 +16,7 @@ namespace AppSample
                 Password = "123"
             };
 
-           var userDTO1 = Mapper.Map<User, UserDTO>(user1);
+            var userDTO1 = Mapper.Map<User, UserDTO>(user1);
 
             Console.WriteLine(JsonSerializer.Serialize(user1));
             Console.WriteLine(JsonSerializer.Serialize(userDTO1));
@@ -32,6 +33,12 @@ namespace AppSample
 
             Console.WriteLine(JsonSerializer.Serialize(user2));
             Console.WriteLine(JsonSerializer.Serialize(userDTO2));
+        }
+
+        private static void SetupMapper()
+        {
+            Mapper.InjectMap<User, UserDTO>(Maps.UserToUserDTO);
+            Mapper.InjectMap<UserDTO, User>(Maps.UserDTOToUser);
         }
     }
 }
