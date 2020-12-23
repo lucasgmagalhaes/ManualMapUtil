@@ -4,23 +4,6 @@ using System.Linq;
 
 namespace AppSample
 {
-    public class MapType
-    {
-        public readonly Type FromType;
-        public readonly Type ToType;
-
-        public MapType(Type fromType, Type toType)
-        {
-            FromType = fromType;
-            ToType = toType;
-        }
-
-        public bool Equals(Type fromType, Type toType)
-        {
-            return FromType == fromType && ToType == toType;
-        }
-    }
-
     public class MapperBuilder
     {
         private readonly Hashtable _functions;
